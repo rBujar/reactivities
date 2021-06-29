@@ -9,7 +9,8 @@ namespace API.Controllers
 {
     public class AuthorController : BaseApiController
     {
-         
+        private object _data;
+
         [HttpGet]
 
         public async Task<ActionResult<List<Author>>> GetActivities()
