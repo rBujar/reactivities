@@ -11,7 +11,7 @@ namespace Application.Activities
     {
         public class Command : IRequest
         {
-            public Activity Activity { get; set; }
+            public Publisher Publisher { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -26,9 +26,9 @@ namespace Application.Activities
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var activity = await _context.Activities.FindAsync(request.Activity.Id);
+                var Publisher = await _context.Publishers.FindAsync(request.Publisher.Id);
 
-                _mapper.Map(request.Activity, activity);
+                _mapper.Map(request.Publisher, Publisher);
 
                 await _context.SaveChangesAsync();
 

@@ -7,6 +7,8 @@ using Persistence;
 using Application.Core;
 using Application.Activities;
 using AutoMapper;
+using Application.Publishers;
+
 namespace API.Extensions
 {
     public static class ApplicationServiceExtensions
