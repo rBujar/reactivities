@@ -10,7 +10,7 @@ namespace Application.Activities
     {
         public class Command : IRequest
         {
-            public Activity Activity { get; set; }
+            public Publisher Publisher { get; set; }
         }
         public class Handler : IRequestHandler<Command>
         {
@@ -22,7 +22,7 @@ namespace Application.Activities
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                _context.Activities.Add(request.Activity);
+                _context.Publishers.Add(request.Publisher);
 
                 await _context.SaveChangesAsync();
 

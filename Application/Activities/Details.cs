@@ -9,11 +9,11 @@ namespace Application.Activities
 {
     public class Details
     {
-        public class Query : IRequest<Activity>
+        public class Query : IRequest<Publisher>
         {
             public Guid Id { get; set; }
         }
-        public class Handler : IRequestHandler<Query, Activity>
+        public class Handler : IRequestHandler<Query, Publisher>
         {
             private readonly DataContext _context;
             public Handler(DataContext context)
@@ -21,9 +21,9 @@ namespace Application.Activities
                 _context = context;
             }
 
-            public async Task<Activity> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Publisher> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Activities.FindAsync(request.Id);
+                return await _context.Publishers.FindAsync(request.Id);
             }
         }
     }
